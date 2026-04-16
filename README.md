@@ -72,6 +72,14 @@ npm run dev
 ```
 ---
 
+## ☁️ Deployment
+
+For production deployment (backend + frontend hosting, env var setup, and troubleshooting), see:
+
+- [`DEPLOYMENT.md`](./DEPLOYMENT.md)
+
+---
+
 ## 📂 Project Structure
 
 ### Backend
@@ -115,6 +123,7 @@ JWT_SECRET=your_jwt_secret
 OPENWEATHER_API_KEY=your_openweather_api_key
 GOOGLE_MAPS_API=your_google_maps_api_key
 GOOGLE_MAPS_API_2=your_google_maps_api_key_2
+FRONTEND_URL=https://your-frontend-domain.vercel.app
 ```
 
 ### Frontend
