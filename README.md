@@ -129,7 +129,7 @@ FRONTEND_URL=https://your-frontend-domain.vercel.app
 ### Frontend
 
 ```bash
-VITE_BASE_URL=http://localhost:5000
+VITE_BASE_URL=https://your-backend-domain.com
 ```
 ---
 

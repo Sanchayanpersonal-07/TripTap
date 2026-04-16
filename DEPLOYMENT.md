@@ -101,6 +101,15 @@ After deployment, verify:
 
 ---
 
+## 5.1) Render + Vercel deploy order (recommended)
+
+1. Deploy backend on Render first and get your Render URL.
+2. Deploy frontend on Vercel with `VITE_BASE_URL=https://<your-render-url>`.
+3. Set backend `FRONTEND_URL=https://<your-vercel-url>` on Render.
+4. Redeploy backend once so strict CORS allows your final Vercel domain.
+
+---
+
 ## 6) Post-Deployment Checklist
 
 - [ ] Backend health route responds (`GET /` returns `Hello World`)
