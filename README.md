@@ -72,6 +72,14 @@ npm run dev
 ```
 ---
 
+## ☁️ Deployment
+
+For production deployment (backend + frontend hosting, env var setup, and troubleshooting), see:
+
+- [`DEPLOYMENT.md`](./DEPLOYMENT.md)
+
+---
+
 ## 📂 Project Structure
 
 ### Backend
