@@ -123,12 +123,13 @@ JWT_SECRET=your_jwt_secret
 OPENWEATHER_API_KEY=your_openweather_api_key
 GOOGLE_MAPS_API=your_google_maps_api_key
 GOOGLE_MAPS_API_2=your_google_maps_api_key_2
+FRONTEND_URL=https://your-frontend-domain.vercel.app
 ```
 
 ### Frontend
 
 ```bash
-VITE_BASE_URL=http://localhost:5000
+VITE_BASE_URL=https://your-backend-domain.com
 ```
 ---
 

@@ -28,6 +28,7 @@ JWT_SECRET=your_long_random_secret
 OPENWEATHER_API_KEY=your_openweather_api_key
 GOOGLE_MAPS_API=your_google_maps_api_key
 GOOGLE_MAPS_API_2=your_google_maps_api_key_2
+FRONTEND_URL=https://your-frontend-domain.vercel.app
 ```
 
 ### Frontend (`frontend/.env`)
@@ -74,7 +75,7 @@ Set all backend environment variables from section 2.
 
 ### Important backend notes
 
-- The app currently allows open CORS via `app.use(cors())`. In production, restrict origins to your frontend domain for better security.
+- Set `FRONTEND_URL` to your exact Vercel URL (for example, `https://triptap.vercel.app`) so backend CORS only allows your frontend.
 - Keep `JWT_SECRET` private and rotate it if exposed.
 
 ---
@@ -97,6 +98,15 @@ After deployment, verify:
 1. Browser can load frontend.
 2. Auth requests succeed.
 3. Socket connection succeeds (check browser console for connection logs).
+
+---
+
+## 5.1) Render + Vercel deploy order (recommended)
+
+1. Deploy backend on Render first and get your Render URL.
+2. Deploy frontend on Vercel with `VITE_BASE_URL=https://<your-render-url>`.
+3. Set backend `FRONTEND_URL=https://<your-vercel-url>` on Render.
+4. Redeploy backend once so strict CORS allows your final Vercel domain.
 
 ---
 
@@ -131,4 +141,3 @@ After deployment, verify:
 ### CORS errors
 
 - If you lock down CORS, ensure frontend domain is whitelisted exactly
-
