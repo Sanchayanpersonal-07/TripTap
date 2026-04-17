@@ -41,15 +41,40 @@ const LiveTracking = () => {
     };
   }, []);
 
-  const mapUrl = useMemo(() => {
+  const mapSrcDoc = useMemo(() => {
     const { lat, lng } = currentPosition;
-    return `https://www.openstreetmap.org/export/embed.html?bbox=${lng - 0.01}%2C${lat - 0.01}%2C${lng + 0.01}%2C${lat + 0.01}&layer=mapnik&marker=${lat}%2C${lng}`;
+
+    return `
+      <!doctype html>
+      <html>
+        <head>
+          <meta charset="utf-8" />
+          <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+          <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+          <style>
+            html, body, #map { height: 100%; margin: 0; padding: 0; }
+          </style>
+        </head>
+        <body>
+          <div id="map"></div>
+          <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+          <script>
+            const map = L.map("map", { zoomControl: true }).setView([${lat}, ${lng}], 15);
+            L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
+              attribution: "&copy; OpenStreetMap contributors",
+              maxZoom: 19
+            }).addTo(map);
+            L.marker([${lat}, ${lng}]).addTo(map).bindPopup("You are here").openPopup();
+          </script>
+        </body>
+      </html>
+    `;
   }, [currentPosition]);
 
   return (
     <iframe
       title="Live Tracking Map"
-      src={mapUrl}
+      srcDoc={mapSrcDoc}
       style={{ width: "100%", height: "100%", border: 0 }}
       loading="lazy"
       referrerPolicy="no-referrer-when-downgrade"
