@@ -12,7 +12,6 @@ Below is a reliable production setup that works well on platforms like Railway/R
 
 - Node.js 20+ (recommended)
 - A MongoDB connection string (MongoDB Atlas recommended)
-- Google Maps API key(s)
 - OpenWeather API key
 
 ---
@@ -26,8 +25,6 @@ PORT=5000
 MONGO_URI=your_mongodb_connection_string
 JWT_SECRET=your_long_random_secret
 OPENWEATHER_API_KEY=your_openweather_api_key
-GOOGLE_MAPS_API=your_google_maps_api_key
-GOOGLE_MAPS_API_2=your_google_maps_api_key_2
 FRONTEND_URL=https://your-frontend-domain.vercel.app
 ```
 
@@ -141,3 +138,9 @@ After deployment, verify:
 ### CORS errors
 
 - If you lock down CORS, ensure frontend domain is whitelisted exactly
+
+### Map not loading / no autocomplete results
+
+- This project now uses OpenStreetMap tiles + Nominatim + OSRM (no Google billing required).
+- Keep traffic low for demo use and avoid very aggressive request rates.
+- If usage grows, use your own hosted geocoding/routing services.
